@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { sleep } from "../utils/sleep";
 
 const useDataApi = async (): Promise<Data[]> => {
-  await sleep(2);
+  await sleep(1);
   const { data } = await api.get<Data[]>("/todos");
   return data;
 };

@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const { dataQuery } = useData();
 
-  if (dataQuery.isLoading) {
+  if (dataQuery.isLoading || dataQuery.isFetching) {
     return <>Loading...</>;
   }
 
