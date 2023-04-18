@@ -19,8 +19,8 @@ function App() {
       </div>
       <h1>React Query - Example</h1>
 
-      {dataQuery.data?.map((data) => (
-        <div className='card'>
+      {dataQuery.data?.map((data, index) => (
+        <div className='card' key={index}>
           <div>
             <strong>Id:</strong> {data.id}
           </div>
