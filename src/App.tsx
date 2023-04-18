@@ -1,4 +1,5 @@
 import reactLogo from "./assets/react.svg";
+import { useNavigate } from "react-router-dom";
 import { useData } from "./hooks/useData";
 
 import "./App.css";
@@ -6,7 +7,8 @@ import "./App.css";
 function App() {
   const { dataQuery } = useData();
 
-  if (dataQuery.isLoading || dataQuery.isFetching) {
+  const navegate = useNavigate();
+  if ((dataQuery.isLoading || dataQuery.isFetching) && !dataQuery.data) {
     return <>Loading...</>;
   }
 
@@ -18,6 +20,8 @@ function App() {
         </a>
       </div>
       <h1>React Query - Example</h1>
+
+      <button onClick={() => navegate("/test")}>Test view</button>
 
       {dataQuery.data?.map((data, index) => (
         <div className='card' key={index}>

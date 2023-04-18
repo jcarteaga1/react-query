@@ -1,6 +1,7 @@
 import { api } from "../requests/api";
 import { Data } from "../interfaces/data.interface";
 import { useQuery } from "@tanstack/react-query";
+
 import { sleep } from "../utils/sleep";
 
 const useDataApi = async (): Promise<Data[]> => {
