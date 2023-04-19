@@ -5,12 +5,9 @@ import { useData } from "./hooks/useData";
 import "./App.css";
 
 function App() {
-  const { dataQuery } = useData();
+  const { dataQuery, prevPage, nextPage, page } = useData();
 
   const navegate = useNavigate();
-  if ((dataQuery.isLoading || dataQuery.isFetching) && !dataQuery.data) {
-    return <>Loading...</>;
-  }
 
   return (
     <div className='App'>
@@ -21,18 +18,22 @@ function App() {
       </div>
       <h1>React Query - Example</h1>
 
+      <h4>Page: {page}</h4>
+      <button onClick={prevPage}>Next</button>
       <button onClick={() => navegate("/test")}>Test view</button>
+      <button onClick={nextPage}>Prev</button>
+
+      {(dataQuery.isLoading || dataQuery.isFetching) && !dataQuery.data && (
+        <div>Loading...</div>
+      )}
 
       {dataQuery.data?.map((data, index) => (
         <div className='card' key={index}>
           <div>
-            <strong>Id:</strong> {data.id}
+            <strong>Pokemon: </strong> {data.name}
           </div>
           <div>
-            <strong>UserId:</strong> {data.userId}
-          </div>
-          <div>
-            <strong>Title:</strong> {data.title}
+            <strong>Url:</strong> {data.url}
           </div>
         </div>
       ))}

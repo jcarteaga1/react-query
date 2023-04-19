@@ -1,6 +1,11 @@
 export interface Data {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
+  name: string;
+  url: string;
+}
+
+export interface DataRequest {
+  count: number;
+  next: string;
+  previous: null;
+  results: Data[];
 }
